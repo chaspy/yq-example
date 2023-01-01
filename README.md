@@ -1,5 +1,14 @@
 # yq-example
 
+## Version
+
+```
+yq --version
+yq (https://github.com/mikefarah/yq/) version 4.27.2
+```
+
+## Example
+
 image tag を linux に変更したい
 
 ```
@@ -26,3 +35,10 @@ APP_ENV_VALUE="example"
 APP_ENV_VALUE=$APP_ENV_VALUE yq e -i '.spec.template.spec.containers[0].env[1].value = strenv(APP_ENV_VALUE)' base/deployment.yaml
 ```
 
+環境変数から新たなキーを指定する
+
+
+```
+APP_ENV_KEY="newkey"
+APP_ENV_KEY=$APP_ENV_KEY yq -i '.spec.template.metadata.labels[env(APP_ENV_KEY)] = "newvalue"' base/deployment.yaml
+```
