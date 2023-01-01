@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: yq-example
-          image: hello-world:latest
+          image: ' hello-world:linux'
           imagePullPolicy: Always
           resources:
             limits:
@@ -34,4 +34,3 @@ spec:
             - name: ENV
               value: production
       restartPolicy: Always
-
